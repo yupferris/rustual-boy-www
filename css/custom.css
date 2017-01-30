@@ -1,0 +1,54 @@
+.header {
+    background-color: #212121;
+    color: #fff;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    text-align: center;
+}
+
+.subtitle {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+
+.container {
+    max-width: 800px;
+}
+
+.value-prop {
+    text-align: center;
+}
+.value-prop-header {
+    text-transform: uppercase;
+    font-size: 1.7rem;
+    letter-spacing: .1rem;
+    font-weight: 600;
+}
+
+.section {
+    border-top: 1px solid #eee;
+    padding: 4rem 0;
+    margin-bottom: 0;
+}
+.section-header {
+    text-transform: uppercase;
+    font-size: 1.4rem;
+    letter-spacing: .2rem;
+    font-weight: 600;
+}
+
+.screenshot {
+    width: 100%;
+    height: auto;
+}
+
+.footer {
+    border-top: 1px solid #eee;
+    padding-top: 4rem;
+    padding-bottom: 2rem;
+    padding-left: 0;
+    padding-right: 0;
+    margin-bottom: 0;
+    font-size: 0.7em;
+    text-align: center;
+}
