@@ -1,0 +1,16 @@
+{
+  "name": "rustual-boy-www",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yupferris/rustual-boy-www.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.14.1",
+    "nconf": "^0.8.4"
+  }
+}
