@@ -1,0 +1,46 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="utf-8")
+    title="Rustual Boy | A Virtual Boy emulator"
+    meta(name="description", content="")
+    meta(name="author", content="")
+
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+
+    link(href="http://fonts.googleapis.com/css?family=Raleway:400,300,600", rel="stylesheet", type="text/css")
+
+    link(rel="stylesheet", href="/css/normalize.css")
+    link(rel="stylesheet", href="/css/skeleton.css")
+    link(rel="stylesheet", href="/css/custom.css")
+
+    link(rel="icon", type="image/png", href="/images/favicon.png")
+
+  body
+    section.header
+      div
+        a(href="/")
+          img(src="/images/logo.png")
+
+      .subtitle
+        strong A Virtual Boy emulator
+
+      a.button(href="https://github.com/emu-rs/rustual-boy/releases") Releases
+      |  
+      a.button(href="https://github.com/emu-rs/rustual-boy") Source
+      |  
+      a.button(href="https://github.com/emu-rs/rustual-boy/blob/master/CONTRIBUTING.md") Contribute
+
+    .container
+      block content
+
+      .footer
+        p
+          | &copy; 2016-2017 
+          a(href="http://iamferris.com") jake &quot;ferris&quot; taylor
+          |  &amp; the rustual boy contributors | 
+          a(href="https://github.com/emu-rs/rustual-boy") github
+          |  | 
+          a(href="https://github.com/emu-rs/rustual-boy/blob/master/CODE_OF_CONDUCT.md") code of conduct
+          |  | css by &#32;
+          a(href="http://getskeleton.com/") skeleton
