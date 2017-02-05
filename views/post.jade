@@ -7,6 +7,10 @@ block content
         = post.title
 
     p
-      small posted by #{post.author} on #{post.date.getFullYear()}.#{post.date.getMonth()+1}.#{post.date.getDate()}
+      small
+        | posted by #{post.author} on #{post.date.getFullYear()}.#{post.date.getMonth()+1}.#{post.date.getDate()} | <a href="#{categoryUrl(post.category)}">#{post.category}</a> | 
+        each tag in post.tags
+          a(href=tagUrl(tag)) #{tag}
+          |  
 
     != post.content
