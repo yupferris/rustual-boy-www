@@ -11,6 +11,10 @@ var app = express();
 
 app.use(express.static('static'));
 
+app.get('/', function(req, res) {
+  res.render('index');
+})
+
 app.set('view engine', 'jade');
 app.set('views', __dirname + '/views');
 
