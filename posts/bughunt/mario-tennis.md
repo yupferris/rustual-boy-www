@@ -14,6 +14,8 @@ Let's rewind a couple months to when I had just finished floating point op's and
 
 [![Mario's Tennis Glitch Edition](/post-images/bughunt/mario-tennis/yeeeeep.png)](/post-images/bughunt/mario-tennis/yeeeeep.png)
 
+<!--more-->
+
 This was (or have been) Mario's Tennis. The game logic appeared to work fine, but it had these horrible (yet quite charming really) graphical glitches. This came as a surprise, as a bunch of other games that looked like they relied on the same hw features worked just fine, but this one would break pretty badly.
 
 One of the annoying things about this kind of problem is the lack of overall clues. When you're doing an emulator from scratch, the problem could be basically anywhere. Was it the video hardware? Possibly, but I didn't think it was doing anything particularly complicated looking at the debug output in the console. Was it the CPU? Also possibly, but it's weird that so many other games were running fine without issues, and _none_ of the other games broke like this. Hell, it could even be the SRAM, gamepad input, anything!
