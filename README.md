@@ -22,6 +22,14 @@ The blog is built with [poet](http://jsantell.github.io/poet/), which means a co
 - Post slugs are generated using the title of the post, so these can't be changed without also invalidating the post url.
 - Post dates use the nonintuitive American format (M-D-Y)
 
+## demo reel
+
+Just in case I lose them later, here's the encoding settings used for the demo reel video:
+```
+ffmpeg.exe -i reel.mkv -c:v libvpx -qmin 0 -qmax 50 -crf 5 -b:v 1M -an reel.webm
+ffmpeg.exe -i reel.mkv -c:v libx264 -profile:v high -preset slow -b:v 1M -maxrate 1M -bufsize 1000k -an reel.mp4
+```
+
 ## license
 
 MIT (see [LICENSE](LICENSE))
