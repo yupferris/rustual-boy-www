@@ -1,0 +1,12 @@
+doctype xml
+urlset(xmlns="http://www.sitemaps.org/schemas/sitemap/0.9")
+  url
+    | <loc>http://rustualboy.com</loc>
+    changefreq daily
+  url
+    | <loc>http://rustualboy.com/blog</loc>
+    changefreq daily
+  each post in posts
+    - var fullUrl = 'http://rustualboy.com' + post.url
+      url
+        loc= fullUrl

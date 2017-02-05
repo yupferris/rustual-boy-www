@@ -45,6 +45,12 @@ app.get('/rss', function(req, res) {
   res.render('rss', { posts: posts });
 });
 
+app.get('/sitemap.xml', function(req, res) {
+  var posts = poet.helpers.getPosts(0, poet.helpers.getPostCount());
+  res.setHeader('Content-Type', 'application/xml');
+  res.render('sitemap', { posts: posts });
+});
+
 var port = nconf.get('httpPort');
 var server = app.listen(port, function() {
   console.log('Server listening on port %s', server.address().port);
