@@ -19,9 +19,15 @@ app.get('/blog', function(req, res) {
 });
 
 var poet = Poet(app, {
-  posts: __dirname + '/posts/',
-  postsPerPage: 5,
-  metaFormat: 'json'
+  postsPerPage: 3,
+  posts: __dirname + '/posts',
+  metaFormat: 'json',
+  routes: {
+    '/blog/post/:post': 'post',
+    '/blog/page/:page': 'page',
+    '/blog/category/:category': 'category',
+    '/blog/tag/:tag': 'tag'
+  }
 });
 poet.init().then(function() {
   console.log('Blog initialized successfully');
