@@ -38,6 +38,11 @@ poet.init().then(function() {
 }, function(err) {
   console.log('Blog not initialized successfully: ' + err);
 });
+poet.watch(function() {
+  console.log('Posts dir changed, cache updated');
+}).init().then(function() {
+  console.log('Watcher initialized successfully');
+});
 
 app.get('/rss', function(req, res) {
   var posts = poet.helpers.getPosts(0, 5);

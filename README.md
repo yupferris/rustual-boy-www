@@ -18,8 +18,7 @@ Note that `pm2` is used to spawn the app in a separate process so that the ssh t
 ## blog
 
 The blog is built with [poet](http://jsantell.github.io/poet/), which means a couple things:
-- Posts are stored as .md files in the `posts/` directory.
-- Poet maintains an in-process post cache that sometimes has to be invalidated, which means restarting the server process. Since our server is lightweight, this isn't a huge deal, but it does mean some not-so-fun things like a few seconds of downtime each time we publish/edit a post.
+- Posts are stored as .md files in the `posts/` directory. We've configured poet to watch the posts dir, but its watcher isn't recursive by default, so we can't use subdirectories. Therefore, all posts follow a simple naming convention: `category-number-postname.md`. This way they can stay cleanly organized within this single folder.
 - Post slugs are generated using the title of the post, so these can't be changed without also invalidating the post url.
 - Post dates use the nonintuitive American format (M-D-Y)
 
