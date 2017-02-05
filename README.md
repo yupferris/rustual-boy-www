@@ -1,6 +1,6 @@
 # rustual-boy-www
 
-Currently just a landing page for [Rustual Boy](https://github.com/emu-rs/rustual-boy).
+A basic landing page/blog for [Rustual Boy](https://github.com/emu-rs/rustual-boy).
 
 ## running locally
 
