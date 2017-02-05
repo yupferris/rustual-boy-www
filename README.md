@@ -11,7 +11,7 @@ The site will be available on [localhost:3000](http://localhost:3000). To use an
 
 ## running in deployment
 
-Start the site: `sudo httpPort=80 pm2 start app.js`
+Start the site: `sudo httpPort=80 useHttps=true pm2 start app.js`
 
 Note that `pm2` is used to spawn the app in a separate process so that the ssh terminal isn't blocked while it's running. To monitor the process, use `sudo pm2 list`. It can be restarted using `sudo pm2 restart app`, and if absolutely necessary, all node processes can be killed using `sudo pm2 kill`.
 
