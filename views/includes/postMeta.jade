@@ -1,0 +1,6 @@
+p
+  small
+    | posted by #{post.author} on <a href="#{post.url}">#{post.date.getFullYear()}.#{post.date.getMonth()+1}.#{post.date.getDate()}</a> | <a href="#{categoryUrl(post.category)}">#{post.category}</a> | 
+    each tag in post.tags
+      a(href=tagUrl(tag)) #{tag}
+      |  
