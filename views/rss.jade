@@ -1,0 +1,18 @@
+doctype xml
+rss(version='2.0', xmlns:atom='http://www.w3.org/2005/Atom')
+  channel
+    title Rustual Boy blog
+    link http://rustualboy.com/blog
+    description The Rustual Boy emulator blog
+    atom:link(href='http://rustualboy.com/rss', rel='self', type='application/rss+xml')
+    each post in posts
+      - var fullUrl = 'http://rustualboy.com' + post.url
+      item
+        title= post.title
+        link= fullUrl
+        description
+          | <![CDATA[
+          | !{post.preview}
+          | ]]>
+        pubDate= post.date.toUTCString()
+        guid= fullUrl

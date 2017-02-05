@@ -39,6 +39,12 @@ poet.init().then(function() {
   console.log('Blog not initialized successfully: ' + err);
 });
 
+app.get('/rss', function(req, res) {
+  var posts = poet.helpers.getPosts(0, 5);
+  res.setHeader('Content-Type', 'application/rss+xml');
+  res.render('rss', { posts: posts });
+});
+
 var port = nconf.get('httpPort');
 var server = app.listen(port, function() {
   console.log('Server listening on port %s', server.address().port);
