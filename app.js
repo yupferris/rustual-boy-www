@@ -14,6 +14,10 @@ app.use(express.static('static'));
 app.set('view engine', 'jade');
 app.set('views', __dirname + '/views');
 
+app.get('/blog', function(req, res) {
+  res.render('blog');
+});
+
 var poet = Poet(app, {
   posts: __dirname + '/posts/',
   postsPerPage: 5,
