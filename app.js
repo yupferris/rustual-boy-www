@@ -1,6 +1,7 @@
 var nconf = require('nconf');
 var express = require('express');
 var forceSSL = require('express-force-ssl');
+var https = require('https');
 var Poet = require('poet');
 
 // Use command-line arguments first, then env variables, then defaults
