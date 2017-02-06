@@ -88,9 +88,9 @@ if (useHttps) {
   }
 
   var secureServer = https.createServer({
-    key: fs.readFileSync("/etc/sslmate/www.rustualboy.com.key", "utf8"),
-    cert: fs.readFileSync("/etc/sslmate/www.rustualboy.com.crt", "utf8"),
-    ca: splitChain(fs.readFileSync("/etc/sslmate/www.rustualboy.com.chain.crt", "utf8"))
+    key: fs.readFileSync("/etc/sslmate/rustualboy.com.key", "utf8"),
+    cert: fs.readFileSync("/etc/sslmate/rustualboy.com.crt", "utf8"),
+    ca: splitChain(fs.readFileSync("/etc/sslmate/rustualboy.com.chain.crt", "utf8"))
   }, app).listen(443, function() {
     console.log("Secure server listening on port %s", secureServer.address().port);
   });
