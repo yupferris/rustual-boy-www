@@ -26,8 +26,10 @@ The blog is built with [poet](http://jsantell.github.io/poet/), which means a co
 
 Just in case I lose them later, here's the encoding settings used for the demo reel video:
 ```
-ffmpeg.exe -i reel.mkv -c:v libvpx -qmin 0 -qmax 50 -crf 5 -b:v 1M -an reel.webm
-ffmpeg.exe -i reel.mkv -c:v libx264 -profile:v high -preset slow -b:v 1M -maxrate 1M -bufsize 1000k -an reel.mp4
+ffmpeg.exe -i reel.mkv -c:v libvpx -qmin 0 -qmax 50 -crf 5 -b:v 1M -an -r 25 reel.webm
+
+ffmpeg.exe -i reel.mkv -c:v libx264 -pix_fmt yuv420p -profile:v baseline -b:v 600k -pass 1 -level 3 -movflags +faststart -an -r 25 -f mp4 /dev/null && \
+ffmpeg.exe -i reel.mkv -c:v libx264 -pix_fmt yuv420p -profile:v baseline -b:v 600k -pass 2 -level 3 -movflags +faststart -an -r 25 reel.mp4
 ```
 
 ## license
