@@ -12,7 +12,7 @@ After many painful attempts to try and track down this bug, the answer ended up 
 
 ### The bug
 
-This bug had a number of symptoms. The most obvious was that very early in the game, powerups would disappear/reapper:
+This bug had a number of symptoms. The most obvious was that very early in the game, powerups would disappear/reappear:
 
 [![The bug](/post-images/bughunt/vertical-force/before.gif)](/post-images/bughunt/vertical-force/before.gif)
 
