@@ -105,7 +105,7 @@ So, I went back to mednafen's source code looking for some answers, and, sure en
 
 Finally, I ended up sitting down and going through our CPU code op-by-op _again_, and comparing against _both_ the mame and mednafen source code to see if I could find anything obvious. Just like the second tracking attempt, this only resulted in a few small logical clarifications/cleanups at first, but nothing really major. I started by checking the usual arithmetic ops first (add, sub, and, or, ..), the jumps/branches, etc.
 
-Then, when looking through mame's mul and mulu op's, I noticed the flags were a bit strange. It seemed like it was setting the flags based on the high 32 bits of the multiplication, rather than the low bit. This seemed a bit odd, so I checked mednafen's source, which unsurprisingly, set the flags based on the low 32 bits as we were doing. So it probably wasn't that, at least.
+Then, when looking through mame's mul and mulu op's, I noticed the flags were a bit strange. It seemed like it was setting the flags based on the high 32 bits of the multiplication result, rather than the low bits. This seemed a bit odd (though there are a _lot_ of similarly sloppy things in mame's v810 code), so I checked mednafen's source, which unsurprisingly, set the flags based on the low 32 bits as we were doing. So it probably wasn't that, at least.
 
 While I was there, though, I noticed one _very_ small detail in mednafen's code:
 
