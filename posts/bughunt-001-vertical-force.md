@@ -132,7 +132,7 @@ let lhs = (self.reg_gpr(reg2) as i32) as i64;
 let rhs = (self.reg_gpr(reg1) as i32) as i64;
 ```
 
-All we had to do all along was cast to signed `i32`'s, then to `i64`'s from there, sign-extending our operands. And that's it!
+All we had to do all along was cast to signed `i32`'s, then to `i64`'s from there, sign-extending our operands. And that's it! I'm still not sure how I missed this so many times, but my guess is simply habit. In Rust, when casting from a small, signed type (such as `i8`) to a larger, unsigned type (such as `u32`), the value gets sign-extended. However, when casting from a smaller, unsigned type to a larger, signed type, the value is zero-extended (which makes sense, since the sign bit isn't meant to be interpreted as a sign in the smaller type's case). It's very common for me to leave out intermediate casts just to make sure sign extend happens when we know it will happen, but it looks like here I simply wasn't careful enough and flubbed. Whoops!
 
 ### Conclusion
 
