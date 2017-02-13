@@ -6,7 +6,7 @@
   "date": "2-13-2017"
 }}}
 
-This is just a tiny update to let you know that the elusive disappearing/reappearing powerups/enemies bug in Vertical Force was _finally_ fixed, bumping up compatibility from 71% to 76%!
+This is just a small (er, maybe not that small) update to let you know that the elusive disappearing/reappearing powerups/enemies bug in Vertical Force was _finally_ fixed, bumping up compatibility from 71% to 76%!
 
 After many painful attempts to try and track down this bug, the answer ended up being _very_ simple...
 
@@ -99,11 +99,11 @@ Well, there's _one_ case where this would be different - `r0`. `r0` is the first
 
 I was so excited about finally finding a clue that I went ahead and [tried changing all of our op impl's to take this into account](https://github.com/emu-rs/rustual-boy/commit/6bdcae816630f8ee79593a4b3fda7904bca620c9). But (if you read the commit message) you'll notice that unfortunately, it actually made the problem _worse_ - now, when the powerups/enemies disappeared, they didn't come back!
 
-So, I went back to mednafen's source code looking for some answers, and, sure enough, I found an explanation. As it turns out, mednafen's `r0` value is _not always 0_. In fact, the code in these ops was overwriting its value to the operation result before setting the flags! This meant two things: 1. the logic ends up being equivalent to what we had before, and 2. something must be setting `r0`'s value back to 0, or else things would get _really_ weird. After a tiny bit more digging, I found the answer - mednafen actually resets `r0`'s value to 0 before each instruction! I'm not entirely sure why they do this; perhaps it's to avoid checking if the register it's reading from/writing to is register 0, and just does the read/write anyways. But, this meant that the logic in that change was neither correct (or at least it doesn't match mednafen; I'm keeping it on a branch _just in case_ but I don't expect it to be correct in the end), nor particularly relevant to our original bugs after all. Bummer!
+So, I went back to mednafen's source code looking for some answers, and, sure enough, I found an explanation. As it turns out, mednafen's `r0` value is _not always 0_. In fact, the code in these ops was overwriting its value to the operation result before setting the flags! This meant two things: 1. the logic ends up being equivalent to what we had before, and 2. something must be setting `r0`'s value back to 0, or else things would get _really_ weird. After a tiny bit more digging, I found the answer - mednafen actually resets `r0`'s value to 0 before each instruction! I'm not entirely sure why they do this; perhaps it's to avoid checking if the register it's reading from/writing to is register 0, and just does the read/write anyways. But, this meant that the logic in my commit was neither correct (or at least it doesn't match mednafen; I'm keeping it on a branch _just in case_ but I don't expect it to be correct in the end), nor particularly relevant to our original bugs after all. Bummer!
 
 ### Tracking attempt 4
 
-Finally, I ended up sitting down and going through our CPU code op-by-op, and comparing against _both_ the mame and mednafen source code to see if I could find anything obvious. Just like the second tracking attempt, this resulted in a few small logical clarifications/cleanups, but nothing really major. I checked the usual arithmetic ops first (add, sub, and, or, ..), the jumps/branches, etc.
+Finally, I ended up sitting down and going through our CPU code op-by-op, and comparing against _both_ the mame and mednafen source code to see if I could find anything obvious. Just like the second tracking attempt, this resulted in a few small logical clarifications/cleanups, but nothing really major. I started by checked the usual arithmetic ops first (add, sub, and, or, ..), the jumps/branches, etc.
 
 Then, when looking through mame's mul and mulu op's, I noticed the flags were a bit strange. It seemed like it was setting the flags based on the high 32 bits of the multiplication, rather than the low bit. This seemed a bit odd, so I checked mednafen's source, which unsurprisingly, set the flags based on the low 32 bits as we were doing. So it probably wasn't that, at least.
 
