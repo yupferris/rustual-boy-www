@@ -38,6 +38,8 @@ I decided to go op-by-op and compare our instruction implementations against the
 
 A couple weeks after this, I decided to dig into the FP ops, as I had some uncertainty about their implementations. I ended up [attempting a small fix](https://github.com/emu-rs/rustual-boy/commit/6bdcae816630f8ee79593a4b3fda7904bca620c9) that didn't seem to affect any of the code I was trying to fix, and while it makes sense, I don't have test hw currently to verify, so I just ended up stuffing those changes on a branch to be tested/confirmed at a later date.
 
+### Tracking attempt 4
+
 Another couple weeks later, I ended up doing another run through these ops, this time against [mednafen](https://mednafen.github.io/)'s source code, to see if I could find anything obvious. I _did_ end up finding something _less_ obvious though...
 
 To show you what this was, let's take a look at mednafen's implementation for the ADD instruction:
@@ -101,7 +103,7 @@ I was so excited about finally finding a clue that I went ahead and [tried chang
 
 So, I went back to mednafen's source code looking for some answers, and, sure enough, I found an explanation. As it turns out, mednafen's `r0` value is _not always 0_. In fact, the code in these ops was overwriting its value to the operation result before setting the flags! This meant two things: 1. the logic ends up being equivalent to what we had before, and 2. something must be setting `r0`'s value back to 0, or else things would get _really_ weird. After a tiny bit more digging, I found the answer - mednafen actually resets `r0`'s value to 0 before each instruction! I'm not entirely sure why they do this; perhaps it's to avoid checking if the register it's reading from/writing to is register 0, and just does the read/write anyways. But, this meant that the logic in my commit was neither correct (or at least it doesn't match mednafen; I'm keeping it on a branch _just in case_ but I don't expect it to be correct in the end), nor particularly relevant to our original bugs after all. Bummer!
 
-### Tracking attempt 4
+### Tracking attempt 5
 
 Finally, I ended up sitting down and going through our CPU code op-by-op _again_, and comparing against _both_ the mame and mednafen source code to see if I could find anything obvious. Just like the second tracking attempt, this only resulted in a few small logical clarifications/cleanups at first, but nothing really major. I started by checking the usual arithmetic ops first (add, sub, and, or, ..), the jumps/branches, etc.
 
@@ -123,9 +125,9 @@ let res = (lhs * rhs) as u64;
 
 Spot the difference? If you blink, you'll miss it! The answer is _very_ simple. In our code, all registers are `u32`'s. In order to do a signed multiply with 64 bits precision, we need to cast these `u32`'s to `i64`'s. See it yet? Our code doesn't properly sign extend, it zero extends! This means that even though we're casting to `i64`'s, we're only ever really doing multiplication of two unsigned 32-bit numbers.
 
-### The final fix
+### The fix
 
-The final fix is super simple:
+The [actual fix](https://github.com/emu-rs/rustual-boy/commit/09cb07879b9c47aea2332a50050dd91efc1b2700) is super simple:
 
 ```
 let lhs = (self.reg_gpr(reg2) as i32) as i64;
@@ -136,6 +138,6 @@ All we had to do all along was cast to signed `i32`'s, then to `i64`'s from ther
 
 ### Conclusion
 
-So, in the end, this fix was absolutely trivial, but as usual, it took a bit of fiddling and searching to nail down exactly what it was! But, at this point, I'm just happy to have finally found it :)
+So, in the end, this fix was absolutely trivial, but as usual, it took a bit of fiddling and searching to nail down exactly what it was! But, at this point, I'm just happy to have finally found it :) . And I haven't done much further digging, but the original bug makes total sense now, if the position of the OBJ's was calculated by multiplying signed sine table values by some amplitude and adding an offset the result. The negative sine values would be interpreted as enormous unsigned ones instead, placing the OBJ's far offscreen, and it's likely that they weren't added to the display list for this reason!
 
 Happy [![76% compatibility](https://img.shields.io/badge/compatibility-76%25-yellow.svg)](https://github.com/emu-rs/rustual-boy/blob/master/README.md#known-game-compatibility) !
