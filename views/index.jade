@@ -1,53 +1,58 @@
 extends layout
 
 block content
-  .section
-    .grid
-      .row
-        div(class="twelve columns")
-          video(autoplay, muted, webkit-playsinline, loop, style="width: 100%; height: auto;", poster="/images/reel-poster.jpg")
-            source(src="/videos/reel.webm", type="video/webm")
-            source(src="/videos/reel.mp4", type="video/mp4")
-            | Your browser does not support the <code>video</code> element.
+  .container
+    .section
+      .grid
+        .row
+          div(class="twelve columns")
+            video(autoplay, muted, webkit-playsinline, loop, style="width: 100%; height: auto;", poster="/images/reel-poster.jpg")
+              source(src="/videos/reel.webm", type="video/webm")
+              source(src="/videos/reel.mp4", type="video/mp4")
+              | Your browser does not support the <code>video</code> element.
 
-  .section
-    h6.section-header tl;dr
-    p <strong>Rustual Boy is a <a href="https://en.wikipedia.org/wiki/Virtual_Boy">Virtual Boy</a> emulator.</strong> It can be used to play existing Virtual Boy games, as well as be a helpful development/debugging tool for homebrew for this platform.
+    .section.top-border
+      h6.section-header tl;dr
+      p <strong>Rustual Boy is a <a href="https://en.wikipedia.org/wiki/Virtual_Boy">Virtual Boy</a> emulator.</strong> It can be used to play existing Virtual Boy games, as well as be a helpful development/debugging tool for homebrew for this platform.
 
-    p The name "Rustual Boy" is a <a href="https://en.wikipedia.org/wiki/Portmanteau">portmanteau</a> of the words <strong>Rust</strong> and <strong>Virtual Boy</strong>. Ok, the <strong>Virtual Boy</strong> part was obvious, but why <strong>Rust</strong>? In fact, Rustual Boy is written in the <a href="https://www.rust-lang.org/en-US/">Rust programming language</a> - a <strong>"systems programming language that runs blazingly fast, prevents segfaults, and guarantees thread safety."</strong> Rust is a wonderful language with a thriving community, and as such provides a fantastic platform for an emulation project!
+      p The name "Rustual Boy" is a <a href="https://en.wikipedia.org/wiki/Portmanteau">portmanteau</a> of the words <strong>Rust</strong> and <strong>Virtual Boy</strong>. Ok, the <strong>Virtual Boy</strong> part was obvious, but why <strong>Rust</strong>? In fact, Rustual Boy is written in the <a href="https://www.rust-lang.org/en-US/">Rust programming language</a> - a <strong>"systems programming language that runs blazingly fast, prevents segfaults, and guarantees thread safety."</strong> Rust is a wonderful language with a thriving community, and as such provides a fantastic platform for an emulation project!
 
-  .section
-    .grid
-      .row
-        div(class="four columns value-prop")
-          h6.value-prop-header Compatible
-          p Rustual Boy emulates <a href="https://github.com/emu-rs/rustual-boy/blob/master/README.md#known-game-compatibility">most commercial Virtual Boy titles</a>.
-        div(class="four columns value-prop")
-          h6.value-prop-header Cross-platform
-          p Rustual Boy supports Windows, MacOS, and Linux out-of-the-box.
-        div(class="four columns value-prop")
-          h6.value-prop-header Open-source
-          p Rustual Boy is developed <a href="https://github.com/emu-rs/rustual-boy">publicly on github</a>.
+  .dark
+    .container
+      .section
+        .grid
+          .row
+            div(class="four columns value-prop")
+              h6.value-prop-header Compatible
+              p Rustual Boy emulates <a href="https://github.com/emu-rs/rustual-boy/blob/master/README.md#known-game-compatibility">most commercial Virtual Boy titles</a>.
+            div(class="four columns value-prop")
+              h6.value-prop-header Cross-platform
+              p Rustual Boy supports Windows, MacOS, and Linux out-of-the-box.
+            div(class="four columns value-prop")
+              h6.value-prop-header Open-source
+              p Rustual Boy is developed <a href="https://github.com/emu-rs/rustual-boy">publicly on github</a>.
 
-  .section
-    h6.section-header Project status
+  .container
+    .section
+      h6.section-header Project status
 
-    p Rustual Boy is currently able to emulate <a href="https://github.com/emu-rs/rustual-boy/blob/master/README.md#known-game-compatibility">the majority of commercial Virtual Boy titles</a>, and many homebrew ones as well. It supports basic video/audio output and keyboard input, as well as a simple CLI debugger. It runs on Windows, MacOS, and Linux.
+      p Rustual Boy is currently able to emulate <a href="https://github.com/emu-rs/rustual-boy/blob/master/README.md#known-game-compatibility">the majority of commercial Virtual Boy titles</a>, and many homebrew ones as well. It supports basic video/audio output and keyboard input, as well as a simple CLI debugger. It runs on Windows, MacOS, and Linux.
 
-    p While Rustual Boy's core emulation is nearly complete <a href="https://github.com/emu-rs/rustual-boy/blob/master/README.md#known-game-compatibility">compatibility-wise</a>, <strong>the project is still quite young</strong>, and needs some time to mature. Particularly, its user interface is lacking (read: virtually non-existent), there are some known (and probably unknown) stability/compatibility issues, and performance isn't fantastic yet, but the emulator should be playable at least.
+      p While Rustual Boy's core emulation is nearly complete <a href="https://github.com/emu-rs/rustual-boy/blob/master/README.md#known-game-compatibility">compatibility-wise</a>, <strong>the project is still quite young</strong>, and needs some time to mature. Particularly, its user interface is lacking (read: virtually non-existent), there are some known (and probably unknown) stability/compatibility issues, and performance isn't fantastic yet, but the emulator should be playable at least.
 
-    p That said, <strong>these things are bound to improve with time</strong>, and <strong>everyone</strong> is encouraged to <a href="https://github.com/emu-rs/rustual-boy/releases">grab the emulator</a>, give it a shot, and <a href="https://github.com/emu-rs/rustual-boy/blob/master/CONTRIBUTING.md">report any bugs/feature requests</a>!
+      p That said, <strong>these things are bound to improve with time</strong>, and <strong>everyone</strong> is encouraged to <a href="https://github.com/emu-rs/rustual-boy/releases">grab the emulator</a>, give it a shot, and <a href="https://github.com/emu-rs/rustual-boy/blob/master/CONTRIBUTING.md">report any bugs/feature requests</a>!
 
-  .section
-    h6.section-header Screenshots
-    .grid
-      .row
-        div(class="six columns") <a href="images/screenshot.png"><img class="screenshot" src="images/screenshot.png" /></a>
-        div(class="six columns") <a href="images/screenshot2.png"><img class="screenshot" src="images/screenshot2.png" /></a>
-      .row
-        div(class="six columns") <a href="images/screenshot3.png"><img class="screenshot" src="images/screenshot3.png" /></a>
-        div(class="six columns") <a href="images/screenshot4.png"><img class="screenshot" src="images/screenshot4.png" /></a>
+    .section.top-border
+      h6.section-header Screenshots
+      .grid
+        .row
+          div(class="six columns") <a href="images/screenshot.png"><img class="screenshot" src="images/screenshot.png" /></a>
+          div(class="six columns") <a href="images/screenshot2.png"><img class="screenshot" src="images/screenshot2.png" /></a>
+        .row
+          div(class="six columns") <a href="images/screenshot3.png"><img class="screenshot" src="images/screenshot3.png" /></a>
+          div(class="six columns") <a href="images/screenshot4.png"><img class="screenshot" src="images/screenshot4.png" /></a>
 
-  .section
-    h6.section-header More info
-    p Check out our <a href="https://github.com/emu-rs/rustual-boy">github repository</a> and our <a href="/blog">blog</a> for more info!
+    .section.top-border
+      h6.section-header More info
+      .more-info
+        p Check out our <a href="https://github.com/emu-rs/rustual-boy">github repository</a> and our <a href="/blog">blog</a> for more info!

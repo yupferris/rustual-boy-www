@@ -1,11 +1,12 @@
 extends layout
 
 block content
-  .section
-    h6.section-header
-      a(href=post.url)
-        = post.title
+  .container
+    .section
+      h6.section-header
+        a(href=post.url)
+          = post.title
 
-    include includes/postMeta
+      include includes/postMeta
 
-    != post.content
+      != post.content

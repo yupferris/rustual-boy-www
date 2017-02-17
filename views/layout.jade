@@ -17,24 +17,27 @@ html(lang="en")
     link(rel="icon", type="image/png", href="/images/favicon.png")
 
   body
-    section.header
-      div
-        a(href="/")
-          img(src="/images/logo.png")
+    .dark
+      .container
+        section.header
+          div
+            a(href="/")
+              img(src="/images/logo.png")
 
-      .subtitle
-        strong A Virtual Boy emulator
+          .subtitle
+            strong A Virtual Boy emulator
 
-      a.button(href="https://github.com/emu-rs/rustual-boy/releases") Releases
-      |  
-      a.button(href="/blog") Blog
-      |  
-      a.button(href="https://github.com/emu-rs/rustual-boy") Source
-      |  
-      a.button(href="https://github.com/emu-rs/rustual-boy/blob/master/CONTRIBUTING.md") Contribute
+          a.button(href="https://github.com/emu-rs/rustual-boy/releases") Releases
+          |  
+          a.button(href="/blog") Blog
+          |  
+          a.button(href="https://github.com/emu-rs/rustual-boy") Source
+          |  
+          a.button(href="https://github.com/emu-rs/rustual-boy/blob/master/CONTRIBUTING.md") Contribute
 
-    .container
-      block content
+    block content
 
-      .footer
-        p &copy; 2016-2017 <a href="http://iamferris.com">jake &quot;ferris&quot; taylor</a> &amp; the rustual boy contributors | <a href="https://github.com/emu-rs/rustual-boy">github</a> | <a href="https://github.com/emu-rs/rustual-boy/blob/master/CODE_OF_CONDUCT.md">code of conduct</a> | css by <a href="http://getskeleton.com/">skeleton</a> | <a href="/blog">blog</a> powered by <a href="http://jsantell.github.io/poet/">poet</a>
+    .dark
+      .container
+        .footer
+          p &copy; 2016-2017 <a href="http://iamferris.com">jake &quot;ferris&quot; taylor</a> &amp; the rustual boy contributors | <a href="https://github.com/emu-rs/rustual-boy">github</a> | <a href="https://github.com/emu-rs/rustual-boy/blob/master/CODE_OF_CONDUCT.md">code of conduct</a> | css by <a href="http://getskeleton.com/">skeleton</a> | <a href="/blog">blog</a> powered by <a href="http://jsantell.github.io/poet/">poet</a>

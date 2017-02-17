@@ -1,15 +1,17 @@
-body {
-    background-color: #eee;
-}
-
 img {
     max-width: 100%;
     height: auto;
 }
 
-.header {
+.dark {
     background-color: #212121;
     color: #fff;
+}
+.dark a:hover {
+    color: #e0e0e0;
+}
+
+.header {
     padding-top: 2rem;
     padding-bottom: 2rem;
     text-align: center;
@@ -22,9 +24,8 @@ img {
 
 .container {
     max-width: 980px;
-    background-color: #fff;
-    padding-left: 4rem;
-    padding-right: 4rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
 }
 
 .value-prop {
@@ -38,11 +39,15 @@ img {
 }
 
 .section {
-    border-top: 1px solid #eee;
     padding: 4rem 0;
     margin-bottom: 0;
 }
+.top-border {
+    border-top: 1px solid #eee;
+}
 .section-header {
+    padding-bottom: 1rem;
+    text-align: center;
     text-transform: uppercase;
     font-size: 1.4rem;
     letter-spacing: .2rem;
@@ -54,10 +59,13 @@ img {
     height: auto;
 }
 
+.more-info {
+    text-align: center;
+}
+
 .footer {
-    border-top: 1px solid #eee;
     padding-top: 4rem;
-    padding-bottom: 2rem;
+    padding-bottom: 1.5rem;
     padding-left: 0;
     padding-right: 0;
     margin-bottom: 0;

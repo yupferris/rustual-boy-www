@@ -1,11 +1,12 @@
 extends layout
 
 block content
-  .section
-    h6.section-header
-      a(href="/page/" + page) Page #{page}
+  .container
+    .section
+      h6.section-header
+        a(href="/page/" + page) Page #{page}
 
-    - each post in posts
-      include includes/postSnippet
+      - each post in posts
+        include includes/postSnippet
 
-  include includes/pagination
+    include includes/pagination

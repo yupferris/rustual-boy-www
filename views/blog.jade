@@ -1,12 +1,13 @@
 extends layout
 
 block content
-  .section
-    h6.section-header Blog <a href="/rss"><img src="/images/rss-small-red.png" /></a>
+  .container
+    .section
+      h6.section-header Blog <a href="/rss"><img src="/images/rss-small-red.png" /></a>
 
-    - var posts = getPosts(0, 5)
-    - var page = 1
-    - each post in posts
-      include includes/postSnippet
+      - var posts = getPosts(0, 5)
+      - var page = 1
+      - each post in posts
+        include includes/postSnippet
 
-  include includes/pagination
+    include includes/pagination
