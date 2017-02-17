@@ -3,11 +3,11 @@ extends layout
 block content
   .container
     .section
-      h6.section-header Blog <a href="/rss"><img src="/images/rss-small-red.png" /></a>
+      h6.section-header Welcome to the Rustual Boy Blog <a href="/rss"><img src="/images/rss-small-red.png" /></a>
 
       - var posts = getPosts(0, 5)
       - var page = 1
       - each post in posts
         include includes/postSnippet
 
-    include includes/pagination
+      include includes/pagination
