@@ -6,7 +6,7 @@ block content
       h6.section-header
         a(href="/page/" + page) Page #{page}
 
-      - each post in posts
+      each post in posts
         include includes/postSnippet
 
     include includes/pagination

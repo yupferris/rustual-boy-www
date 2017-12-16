@@ -24,7 +24,7 @@ app.get('/', function(req, res) {
   res.render('index');
 })
 
-app.set('view engine', 'jade');
+app.set('view engine', 'pug');
 app.set('views', __dirname + '/views');
 
 app.get('/blog', function(req, res) {
