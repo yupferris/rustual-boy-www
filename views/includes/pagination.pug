@@ -3,14 +3,10 @@ if pageCount > 1
   .section
     h6.section-header Pages
 
-  p
-    ul
+    p(style="text-align: center;")
       - var i = 1;
       - while(i <= pageCount)
-        if page == i
-          li
-            a(href=pageURL(i)) #{i}
-        else
-          li
-            a(href=pageURL(i)) #{i}
+        a(href=pageURL(i)) #{i}
+        - if(i < pageCount)
+          |  |  
         - i++;
